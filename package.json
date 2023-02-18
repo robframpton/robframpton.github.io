@@ -1,0 +1,15 @@
+{
+  "name": "robframpton.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "git@github.com:robframpton/robframpton.github.io.git",
+  "author": "Robert Frampton <rob.g.frampton@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "http-server ."
+  },
+  "devDependencies": {
+    "http-server": "14.1.1",
+    "prettier": "2.8.4"
+  }
+}
