@@ -1,65 +1,73 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/main.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"
+      integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/assets/main.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js" integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg==" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
-</head>
+  <body>
+    <!-- <img src="/assets/rob_two_tone.svg" /> -->
+  </body>
 
-<body>
-  <!-- <img src="/assets/rob_two_tone.svg" /> -->
-</body>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
 
-<script>
-  const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
 
-const renderer = new THREE.WebGLRenderer({alpha: true});
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+    const light = new THREE.AmbientLight(0x404040); // soft white light
+    scene.add(light);
 
-const light = new THREE.AmbientLight( 0x404040 ); // soft white light
-scene.add( light );
+    const dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(1, 10, 5);
+    scene.add(dl);
 
-const dl = new THREE.DirectionalLight(0xffffff, 1);
-dl.position.set(1, 10, 5);
-scene.add(dl);
+    const loader = new THREE.GLTFLoader();
+    loader.load(
+      "/assets/icons/cloud.glb",
+      function (gltf) {
+        scene.add(gltf.scene);
+      },
+      undefined,
+      function (error) {
+        console.error(error);
+      }
+    );
 
-const loader = new THREE.GLTFLoader();
-loader.load( '/assets/icons/cloud.glb', function ( gltf ) {
-
-scene.add( gltf.scene );
-
-}, undefined, function ( error ) {
-
-console.error( error );
-
-} );
-
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshStandardMaterial({
-        color: 0xff0000,
-        emissive: 0x0a0a0a
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0xff0000,
+      emissive: 0x0a0a0a,
     });
-const cube = new THREE.Mesh( geometry, material );
+    const cube = new THREE.Mesh(geometry, material);
 
-scene.add( cube );
+    scene.add(cube);
 
-camera.position.z = 5;
+    camera.position.z = 5;
 
-function animate() {
-	requestAnimationFrame( animate );
-  
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-  
-	renderer.render( scene, camera );
-}
-animate();
-</script>
+    function animate() {
+      requestAnimationFrame(animate);
 
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
 </html>
