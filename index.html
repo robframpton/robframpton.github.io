@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/assets/styles/main.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              fadein: "fadeIn 500ms ease-in-out",
+              popin1: "popIn 500ms ease-in-out forwards",
+              popin2: "popIn 500ms ease-in-out 200ms forwards",
+              popin3: "popIn 500ms ease-in-out 400ms forwards",
+              popin4: "popIn 500ms ease-in-out 600ms forwards",
+            },
+            keyframes: (theme) => ({
+              fadeIn: {
+                "0%": { opacity: 0 },
+                "100%": { opacity: 1 },
+              },
+              popIn: {
+                "0%": { opacity: 0, transform: "translate(-20px)" },
+                "100%": { opacity: 1, transform: "translate(0)" },
+              },
+            }),
+          },
+        },
+      };
+    </script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js"
       integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg=="
@@ -15,7 +40,17 @@
   </head>
 
   <body>
-    <!-- <img src="/assets/rob_two_tone.svg" /> -->
+    <div class="float-left">
+      <img class="animate-fadein" src="/assets/rob_two_tone.svg" />
+      <ul
+        class="text-center list-none underline tracking-widest ml-0 font-light text-gray-400"
+      >
+        <li class="mb-2 opacity-0 animate-popin1"><a href="/">Github</a></li>
+        <li class="mb-2 opacity-0 animate-popin2"><a href="/">PolyWork</a></li>
+        <li class="mb-2 opacity-0 animate-popin3"><a href="/">LinkedIn</a></li>
+        <li class="mb-2 opacity-0 animate-popin4"><a href="/">Email</a></li>
+      </ul>
+    </div>
   </body>
 
   <script src="/assets/scripts/main.js"></script>

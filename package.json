@@ -6,7 +6,7 @@
   "author": "Robert Frampton <rob.g.frampton@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "http-server .",
+    "start": "http-server --no-cache .",
     "format": "prettier --write ."
   },
   "devDependencies": {
