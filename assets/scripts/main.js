@@ -27,7 +27,7 @@ const SHAPES = [
   {
     name: "git",
     color: 0xf96e46,
-    delay: 300,
+    delay: 350,
     position: new THREE.Vector3(-0.6, -0.2, 4),
     rotation: {
       start: {
@@ -45,7 +45,7 @@ const SHAPES = [
   {
     name: "database",
     color: 0xfcca46,
-    delay: 500,
+    delay: 600,
     position: new THREE.Vector3(-0.8, 0.6, 3),
     rotation: {
       start: {
@@ -63,7 +63,7 @@ const SHAPES = [
   {
     name: "stack",
     color: 0x399e5a,
-    delay: 500,
+    delay: 700,
     position: new THREE.Vector3(1.4, -0.8, 3),
     rotation: {
       start: {
@@ -81,7 +81,7 @@ const SHAPES = [
   {
     name: "terminal",
     color: 0xa964ce,
-    delay: 600,
+    delay: 900,
     position: new THREE.Vector3(0.1, -1.5, 2),
     rotation: {
       start: {
@@ -99,7 +99,7 @@ const SHAPES = [
   {
     name: "cloud",
     color: 0x345995,
-    delay: 800,
+    delay: 1200,
     position: new THREE.Vector3(-3, 1.5, 2),
     rotation: {
       start: {
@@ -117,7 +117,7 @@ const SHAPES = [
   {
     name: "window",
     color: 0x394648,
-    delay: 100,
+    delay: 1400,
     position: new THREE.Vector3(3.5, 2.5, 1),
     rotation: {
       start: {
@@ -257,7 +257,7 @@ const bootstrap = async () => {
 
   initLights(scene);
 
-  await Promise.all(SHAPES.map((shape) => initShape(scene, shape)));
+  Promise.all(SHAPES.map((shape) => initShape(scene, shape)));
 
   const animate = () => {
     requestAnimationFrame(animate);
