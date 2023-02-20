@@ -165,7 +165,7 @@ const initLights = (scene) => {
   const light = new THREE.AmbientLight(0xaaaaaa); // soft white light
   scene.add(light);
 
-  const dl = new THREE.DirectionalLight(0xffffff, 1);
+  const dl = new THREE.DirectionalLight(0xffffff, 0.8);
   dl.position.set(1, 10, 5);
   scene.add(dl);
 
@@ -214,8 +214,6 @@ const initShape = async (scene, shapeSettings) => {
 
         // Start position
         Object.assign(group.position, { ...position, z: position.z - 0.4 });
-
-        console.log(group.position)
 
         // Animate position
         new TWEEN.Tween(group.position)
